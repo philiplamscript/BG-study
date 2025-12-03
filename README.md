@@ -1,12 +1,15 @@
-# 🚀 Board Game Study Simulation
+🚀 Board Game Study Simulation
 
 ## 📋 Prerequisites
 
 * **Git:** For cloning the repository.
 * **Python (3.7+ recommended):** For running the application.
+* **CMD/PowerShell:** For starting application locally.
 ---
 
 ## 1. ⬇️ Git Clone the Repository
+
+Open 
 
 ```bash
 git clone https://github.com/philiplamscript/BG-study.git
@@ -38,13 +41,10 @@ pip install -r requirements.txt
 streamlit run Homepage.py
 ```
 
-Finally you show see the page as below:
-![image](./)
-
-Take you interested topic, then Navigate to trail the simulation.
-![image](./)
+Finally you show see the page as below, Take you interested topic, then Navigate to trail the simulation.
+![image](./pic/homepage.png)
 
 
-#### Have Fun!
+### ENJOY!
 
 
