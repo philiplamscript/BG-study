@@ -12,8 +12,7 @@ st.set_page_config(
 
 st.title("🎲 Game Strategy Analysis Dashboard")
 st.markdown("""
-    Welcome! This application hosts **Monte Carlo simulation results** for two distinct board game mechanics. 
-    Each analysis is powered by **10,000 randomized trials** to provide robust, data-driven insights into strategic betting and probability distributions.
+    Welcome! This application hosts **Monte Carlo simulation results** , providing data-driven insights into strategic betting and probability distributions.
 """)
 
 st.divider()
@@ -26,6 +25,7 @@ with col1:
     st.page_link("pages/1_🐪_Camel_Run_Analysis.py", label="Go to Camel Run Results", icon="🐪")
 
     st.subheader("1. 🐪 Camel Run Analysis")
+    st.image("./pic/Camel Run - Title.jpg")
     st.markdown("""
         ### **Game Type: Stack-Based Racing**
         
@@ -67,12 +67,15 @@ with col3:
     st.page_link("pages/3_📱_Smartphone_Inc_Analysis.py", label="Go to Smartphone Inc. Strategy", icon="📱")
 
     st.subheader("3. 📱 Smartphone Inc. Analysis")
-    st.image("https://placehold.co/600x200/0F766E/FFFFFF?text=Strategy+Optimization", caption="Illustration of Strategic Decision Making")
+    st.image("./pic/Mobile Markets - Title.png")
     st.markdown("""
         ### **Game Type: Economic Strategy (Case Study)**
         
         This is an **exhaustive case analysis** to determine the optimal strategy for maximizing profit in the Smartphone Inc. game. It explores all combinations of Price, Technology, and Promotion tiers.
-        
+         """)
+    st.image("./pic/Mobile Markets - planning board.png")
+
+    st.markdown("""
         **Key Strategic Insights:**
         * **Max Profit Strategy:** Identifies the exact combination of P, T, and M that yields the highest total profit.
         * **Cost/Revenue Breakdown:** Visualizes the cost-to-revenue dynamics for all 80 possible scenarios.
