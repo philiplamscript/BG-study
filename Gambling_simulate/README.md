@@ -39,12 +39,10 @@ streamlit run Homepage.py
 ```
 
 Finally you show see the page as below:
-![image](./)
-
-Take you interested topic, then Navigate to trail the simulation.
-![image](./)
+![image](./pic/homepage.png)
 
 
+Take interested topic, then Navigate to trail the simulation.
 #### Have Fun!
 
 
