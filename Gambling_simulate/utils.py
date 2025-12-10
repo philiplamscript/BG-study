@@ -15,16 +15,25 @@ def two_dice_sum():
 def select_horse(value):
     return min(max(value, 3), 11)
 
-@st.cache_data
-def run_bet_simulation(num_trials):
+def run_bet_simulation(num_trials, progress_bar=None):
     """
     Reruns the logic for the Ready to Bet game simulation.
     
     Args:
         num_trials (int): The number of simulations to run.
+        progress_bar (st.progress or None): The Streamlit progress bar object to update.
     """
     award_his = pd.DataFrame()
     for trail in range(num_trials):
+        
+        # --- ADDED: Progress Bar Update ---
+        if progress_bar:
+            progress_bar.progress(
+                (trail + 1) / num_trials, 
+                text=f"Simulation {trail + 1:,} of {num_trials:,} running..."
+            )
+        # -----------------------------------
+        
         dice_his = pd.DataFrame()
         
         # Initial status setup
@@ -80,17 +89,28 @@ def run_bet_simulation(num_trials):
     return award_his
 
 # --- Helper Functions from 'Camel run.ipynb' ---
-
-@st.cache_data
-def run_camel_run_simulation(num_sims):
+def run_camel_run_simulation(num_sims, progress_bar=None):
     """
     Reruns the logic for the Camel Run game simulation.
     
     Args:
         num_sims (int): The number of simulations to run.
+        progress_bar (st.progress or None): The Streamlit progress bar object to update.
     """
     sim_hist = pd.DataFrame()
+    # Initialize a new DataFrame to hold all small game history across all simulations
+    small_game_hist_all = pd.DataFrame() 
+
     for sim in range(num_sims):
+        
+        # --- ADDED: Progress Bar Update ---
+        if progress_bar:
+            progress_bar.progress(
+                (sim + 1) / num_sims, 
+                text=f"Simulation {sim + 1:,} of {num_sims:,} running..."
+            )
+        # -----------------------------------
+
         # init condition setup
         df = [['A',0,1],['B',0,2],['C',0,3],['D',0,4],['E',0,5]]
         Camel_list = pd.DataFrame(df,columns=['name','location','order'])
@@ -143,6 +163,9 @@ def run_camel_run_simulation(num_sims):
 
         if not small_game_hist.empty:
             pv_record = pd.pivot_table(small_game_hist, index='name', columns='rank', aggfunc='count', fill_value=0)['big_run']
+            # --- FIX: Aggregate small game history from this run to the overall history
+            small_game_hist_all = pd.concat([small_game_hist_all, small_game_hist], ignore_index=True)
+            # ----------------------------------------------------------------------
         else:
             pv_record = pd.DataFrame(0, index=['A', 'B', 'C', 'D', 'E'], columns=[1, 2, 5]) 
             
@@ -167,8 +190,7 @@ def run_camel_run_simulation(num_sims):
                       }
         sim_hist = pd.concat([sim_hist, pd.DataFrame(sim_record, index=[sim])])
         
-    return sim_hist, small_game_hist
-
+    return sim_hist, small_game_hist_all # return the overall small game history
 
 @st.cache_data
 def calculate_smartphone_profits():

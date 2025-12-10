@@ -10,7 +10,7 @@ if 'bet_step' not in st.session_state:
 if 'award_his' not in st.session_state:
     st.session_state.award_his = None
 if 'bet_num_sims' not in st.session_state:
-    st.session_state.bet_num_sims = 10000
+    st.session_state.bet_num_sims = 1000
 
 # --- Navigation Callbacks ---
 def set_step_bet(step):
@@ -18,14 +18,22 @@ def set_step_bet(step):
 
 def run_simulation_bet():
     # Only run if a valid number is provided
-    num_sims = int(st.session_state.get('num_sims_input_bet', 10000))
+    num_sims = int(st.session_state.get('num_sims_input_bet', 1000))
     if num_sims < 10:
         st.error("Please enter at least 10 simulations.")
         return
         
     st.session_state.bet_num_sims = num_sims
-    with st.spinner(f"Running {st.session_state.bet_num_sims:,} simulations... This may take a moment."):
-        award_his = run_bet_simulation(st.session_state.bet_num_sims)
+    
+    # 1. Initialize the progress bar with a custom text
+    progress_bar = st.progress(0, text=f"Simulation 0 of {num_sims:,} running...")
+    
+    # 2. Pass the progress_bar object to the simulation function
+    award_his = run_bet_simulation(st.session_state.bet_num_sims, progress_bar)
+    
+    # 3. Clear the progress bar after completion
+    progress_bar.empty()
+
     st.session_state.award_his = award_his
     set_step_bet(2)     
     st.rerun()
@@ -60,6 +68,7 @@ if st.session_state.bet_step >= 1:
     st.caption("👈 Click the button above to start the analysis.")
 
 st.divider()
+
 
 # --- Step 2: Display Overall Simulation History ---
 st.subheader("Step 2: Review Simulation History")
@@ -105,16 +114,33 @@ if st.session_state.bet_step >= 3:
         'Rank 1~3 Probability': rank1_3_prob,
         
     })
-    
+    column_config={
+        'Rank 1 Probability': st.column_config.NumberColumn(
+            "Rank 1 Probability",format="percent"
+        ),
+        'Rank 2 Probability': st.column_config.NumberColumn(
+            "Rank 2 Probability",format="percent"
+        ),
+        'Rank 3 Probability': st.column_config.NumberColumn(
+            "Rank 3 Probability",format="percent"
+        ),
+        'Rank 1~2 Probability': st.column_config.NumberColumn(
+            "Rank 1~2 Probability",format="percent"        
+        ),
+        'Rank 1~3 Probability': st.column_config.NumberColumn(
+            "Rank 1~3 Probability",format="percent"        
+        ),
+    }
+
     # Clean up the index names (e.g., 'horse 3 rank' -> 'Horse 3')
     prob_df_stacked.index = prob_df_stacked.index.str.replace(' horse ', 'Horse ').str.replace(' rank', '')
     
     # Display the stacked probability table (showing the splits)
-    st.dataframe(prob_df_stacked[['Rank 1 Probability','Rank 1~2 Probability','Rank 1~3 Probability']]) 
+    st.dataframe(prob_df_stacked[['Rank 1 Probability','Rank 1~2 Probability','Rank 1~3 Probability']],column_config=column_config) 
     
     st.caption("Stacked Probability Chart (1st, 2nd, and 3rd Place Odds)")
     # 5. Chart: Streamlit's bar_chart automatically stacks columns by default.
-    st.bar_chart(prob_df_stacked[['Rank 1 Probability','Rank 2 Probability','Rank 3 Probability']])
+    st.bar_chart(prob_df_stacked[['Rank 1 Probability','Rank 2 Probability','Rank 3 Probability']],sort=False)
     
     if st.button("Continue to System Metrics", on_click=set_step_bet, args=[4], key='btn_step3_bet'):
         st.rerun()

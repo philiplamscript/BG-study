@@ -12,7 +12,7 @@ if 'camel_sim_hist' not in st.session_state:
 if 'camel_small_game_hist' not in st.session_state:
     st.session_state.camel_small_game_hist = None
 if 'camel_num_sims' not in st.session_state:
-    st.session_state.camel_num_sims = 10000
+    st.session_state.camel_num_sims = 1000
 
 # --- Navigation Callbacks ---
 def set_step(step):
@@ -20,14 +20,26 @@ def set_step(step):
 
 def run_simulation_camel():
     # Only run if a valid number is provided
-    num_sims = int(st.session_state.get('num_sims_input_camel', 10000))
+    num_sims = int(st.session_state.get('num_sims_input_camel', 1000))
     if num_sims < 10:
         st.error("Please enter at least 10 simulations.")
         return
 
     st.session_state.camel_num_sims = num_sims
-    with st.spinner(f"Running {st.session_state.camel_num_sims:,} simulations... This may take a moment."):
-        sim_hist, small_game_hist = run_camel_run_simulation(st.session_state.camel_num_sims)
+    
+    # 1. Initialize the progress bar with a custom text
+    # The text will update live if run_camel_run_simulation updates the bar.
+    progress_bar = st.progress(0, text=f"Simulation 0 of {num_sims:,} running...")
+
+    # NOTE: To see the live simulation number, you MUST update the 
+    # 'run_camel_run_simulation' function (in utils.py) to accept 'progress_bar' 
+    # and call 'progress_bar.progress((i + 1) / num_sims, text=f"Simulation {i+1:,} of {num_sims:,} running...")'
+    # inside its simulation loop.
+    
+    sim_hist, small_game_hist = run_camel_run_simulation(st.session_state.camel_num_sims, progress_bar)
+    
+    progress_bar.empty() # Clear the progress bar after completion
+
     st.session_state.camel_sim_hist = sim_hist
     st.session_state.camel_small_game_hist = small_game_hist
     set_step(2)
