@@ -34,10 +34,10 @@ Two shapes (Call Pod W and Pod B) are defined for each player, labeled side 0 an
 
 | Variable name |Pod| Matrix Configuration |
 | :--- | :--- | :--- |
-| **`box_W[0]`** |<img src="./pic/boardpiece-W0.png" style="width:90px;"/> | $$\begin{pmatrix} 5 & 0 \\ 2 & 4 \\ 5 & 2 \end{pmatrix}$$ |
-| **`box_W[1]`** |<img src="./pic/boardpiece-W1.png" style="width:90px;"/> | $$\begin{pmatrix} 0 & 4 \\ 4 & 3 \\ 1 & 5 \end{pmatrix}$$ |
-| **`box_B[0]`** |<img src="./pic/boardpiece-B0.png" style="width:90px;"/> | $$\begin{pmatrix} 2 & 0 \\ 5 & 4 \\ 4 & 1 \end{pmatrix}$$ |
-| **`box_B[1]`** |<img src="./pic/boardpiece-B1.png" style="width:90px;"/> | $$\begin{pmatrix} 0 & 3 \\ 5 & 5 \\ 3 & 4 \end{pmatrix}$$
+| **`box_W[0]`** |<img src="./pic/boardpiece-W0.png" style="width:90px;"/> | <img src="./pic/matrixW0.png" style="width:90px;"/>|
+| **`box_W[1]`** |<img src="./pic/boardpiece-W1.png" style="width:90px;"/> | <img src="./pic/matrixW1.png" style="width:90px;"/>|
+| **`box_B[0]`** |<img src="./pic/boardpiece-B0.png" style="width:90px;"/> | <img src="./pic/matrixB0.png" style="width:90px;"/>|
+| **`box_B[1]`** |<img src="./pic/boardpiece-B1.png" style="width:90px;"/> | <img src="./pic/matrixB1.png" style="width:90px;"/>|
 
 
 <!-- ## 🛠️ Key Functions and Logic
@@ -67,6 +67,7 @@ This section generates all possible combinations and records their metrics.
 
 * It iterates through all combinations of:
 <img src="./pic/combina.gif" style="width:200px;"/>
+
     * `W_filp` (Box W 0 or 1)
     * `B_filp` (Box B 0 or 1)
     * `trans_times` (Box B rotation: 0, 90, 180, 270 degrees)
