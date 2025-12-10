@@ -65,19 +65,22 @@ Two shapes (Call Pod W and Pod B) are defined for each player, labeled side 0 an
 ### **Combination Generation Loop**
 This section generates all possible combinations and records their metrics.
 
-* It iterates through all combinations of:
+Total 420 combination results are stored in `result_df` and the board images are stored in `Combina_box_record`. 
+It iterates through all combinations of:
+
 <img src="./pic/combina.gif" style="width:200px;"/>
 
-    * `W_filp` (Box W 0 or 1)
-    * `B_filp` (Box B 0 or 1)
-    * `trans_times` (Box B rotation: 0, 90, 180, 270 degrees)
-    * `i` and `j` (Box B placement coordinates)
+* `W_filp` (Box W 0 or 1)
+* `B_filp` (Box B 0 or 1)
+* `trans_times` (Box B rotation: 0, 90, 180, 270 degrees)
+* `i` and `j` (Box B placement coordinates)
 * Box W is fixed at a centered position $\left((i, j) = (2, 2)\right)$.
 * **Two covering scenarios are considered for each placement:**
     1.  Box B is placed **after** Box W (Box B is `major_b='b'`)
     2.  Box W is placed **after** Box B (Box W is `major_b='w'`)
 * **Invalid combinations are filtered out** if the number of covered cells (`replaced`) is 0 or 5.
-* Total 420 combination results are stored in `result_df` and the board images are stored in `Combina_box_record`.
+
+
 
 
 
