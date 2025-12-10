@@ -117,7 +117,7 @@ A combination is defined as **"optimal"** if, for its resulting `price`, no othe
 |202|4|6|1|2|+1 in Tech
 
 
-* Those 409 optimal placement combinations are turned into **58 optimal spec**.
+* Those 409 optimal placement combinations are turned into **58 optimal spec combinations**.
 
 * Lists 11 **unique and optimal spec** that are not easy to combina.
 
