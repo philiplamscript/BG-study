@@ -7,7 +7,23 @@ from pathlib import Path
 # root_path = Path(__file__).resolve().parent
 # sys.path.append(str(root_path / "Gambling_simulate"))
 
-folder1_path = Path(__file__).parent / "Gambling_simulate"
+# folder1_path = Path(__file__).parent / "Gambling_simulate"
+
+import os
+
+# Get the current directory (main)
+current_dir = os.getcwd()
+
+# Join with your target folder
+target_dir = os.path.join(current_dir, "Gambling_simulate")
+
+# Change the working directory
+if os.path.exists(target_dir):
+    os.chdir(target_dir)
+
+# Now, any relative paths will start inside /folder1
+print(f"Current working directory: {os.getcwd()}")
+
 
 import streamlit as st
 import pandas as pd
