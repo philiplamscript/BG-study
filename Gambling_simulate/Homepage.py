@@ -1,3 +1,12 @@
+import sys
+import os
+from pathlib import Path
+
+# Get the absolute path of the directory containing 'src'
+# (The root directory of your repo)
+root_path = Path(__file__).resolve().parent.parent.parent
+sys.path.append(str(root_path / "Gambling_simulate"))
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -25,7 +34,7 @@ with col1:
     st.page_link("pages/1_🐪_Camel_Run_Analysis.py", label="Go to Camel Run Results", icon="🐪")
 
     st.subheader("1. 🐪 Camel Run Analysis")
-    st.image("Gambling_simulate/pic/Camel Run - Title.jpg",width=250)
+    st.image("pic/Camel Run - Title.jpg",width=250)
     st.markdown("""
         ### **Game Type: Stack-Based Racing**
         
