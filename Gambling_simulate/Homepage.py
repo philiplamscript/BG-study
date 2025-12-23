@@ -25,7 +25,7 @@ with col1:
     st.page_link("pages/1_🐪_Camel_Run_Analysis.py", label="Go to Camel Run Results", icon="🐪")
 
     st.subheader("1. 🐪 Camel Run Analysis")
-    st.image("./pic/Camel Run - Title.jpg")
+    st.image("pic/Camel Run - Title.jpg",width=250)
     st.markdown("""
         ### **Game Type: Stack-Based Racing**
         
@@ -43,7 +43,7 @@ with col2:
 
     st.subheader("2. 🎲 Ready to Bet Analysis")
     # Adding a placeholder image to illustrate the theme
-    st.image("./pic/Ready Set bet - Title.jpeg")
+    st.image("./pic/Ready Set bet - Title.jpeg",width=250)
     
     st.markdown("""
         ### **Game Type: Dice & Consecutive Bonus**
