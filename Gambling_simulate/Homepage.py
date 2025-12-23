@@ -20,7 +20,7 @@ if os.path.exists(current_dir):
     os.chdir(current_dir)
 
 # # Now, any relative paths will start inside /folder1
-# print(f"Current working directory: {os.getcwd()}")
+print(f"Current working directory: {os.getcwd()}")
 
 
 import streamlit as st
