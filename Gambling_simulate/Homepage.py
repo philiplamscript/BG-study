@@ -1,33 +1,18 @@
-import sys
-import os
-from pathlib import Path
-
-# # Get the absolute path of the directory containing 'src'
-# # (The root directory of your repo)
-# root_path = Path(__file__).resolve().parent
-# sys.path.append(str(root_path / "Gambling_simulate"))
-
-folder1_path = Path(__file__)
-
-# Get the current directory (main)
-current_dir = os.getcwd()
-
-# Join with your target folder
-target_dir = os.path.join(current_dir, "Gambling_simulate")
-
-# Change the working directory
-# if os.path.exists(target_dir):
-os.chdir(target_dir)
-
-# # Now, any relative paths will start inside /folder1
-print(f"Current working directory: {os.getcwd()}")
-
-
 import streamlit as st
 import pandas as pd
 import numpy as np
 
 # Note: The simulation functions are now in utils.py and imported by the page files.
+
+def image_opening(link):
+
+    """dueling different working path on streamlit cloud"""
+
+    try:   
+        st.image(f"{link}",width=250)
+    except st.errors.StreamlitPageNotFoundError:
+        st.image(f"Gambling_simulate{link}",width=250)
+
 
 st.set_page_config(
     # Updated the browser tab title and hopefully the sidebar label for the root page
@@ -50,7 +35,8 @@ with col1:
     st.page_link("pages/1_🐪_Camel_Run_Analysis.py", label="Go to Camel Run Results", icon="🐪")
 
     st.subheader("1. 🐪 Camel Run Analysis")
-    st.image("pic/Camel Run - Title.jpg",width=250)
+    image_opening("pic/Camel Run - Title.jpg")
+
     st.markdown("""
         ### **Game Type: Stack-Based Racing**
         
@@ -68,7 +54,7 @@ with col2:
 
     st.subheader("2. 🎲 Ready to Bet Analysis")
     # Adding a placeholder image to illustrate the theme
-    st.image("./pic/Ready Set bet - Title.jpeg",width=250)
+    image_opening("./pic/Ready Set bet - Title.jpeg")
     
     st.markdown("""
         ### **Game Type: Dice & Consecutive Bonus**
@@ -76,7 +62,7 @@ with col2:
         This simulation models movement driven by the sum of two dice (houses 3 through 11). The critical mechanism is the **consecutive move bonus**, which drastically increases movement for houses rolled back-to-back.
         """)
     
-    st.image("./pic/Ready Set bet - Race.jpeg")
+    image_opening("./pic/Ready Set bet - Race.jpeg")
 
     st.markdown("""
         **Key Strategic Insights:**
@@ -85,26 +71,6 @@ with col2:
     """)
     
 
-
-
-# with col3:
-#     # Direct link to the page
-#     st.page_link("pages/3_📱_Smartphone_Inc_Analysis.py", label="Go to Smartphone Inc. Strategy", icon="📱")
-
-#     st.subheader("3. 📱 Smartphone Inc. Analysis")
-#     st.image("./pic/Mobile Markets - Title.png")
-#     st.markdown("""
-#         ### **Game Type: Economic Strategy (Case Study)**
-        
-#         This is an **exhaustive case analysis** to determine the optimal strategy for maximizing profit in the Smartphone Inc. game. It explores all combinations of Price, Technology, and Promotion tiers.
-#          """)
-#     st.image("./pic/Mobile Markets - planning board.png")
-
-#     st.markdown("""
-#         **Key Strategic Insights:**
-#         * **Max Profit Strategy:** Identifies the exact combination of P, T, and M that yields the highest total profit.
-#         * **Cost/Revenue Breakdown:** Visualizes the cost-to-revenue dynamics for all 80 possible scenarios.
-#     """)
     
 st.divider()
 
