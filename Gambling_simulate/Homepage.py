@@ -8,9 +8,9 @@ def image_opening(link):
 
     """dueling different working path on streamlit cloud"""
 
-    try:   
+    try:
         st.image(f"{link}",width=250)
-    except st.errors.StreamlitPageNotFoundError:
+    except FileNotFoundError:
         st.image(f"Gambling_simulate{link}",width=250)
 
 
