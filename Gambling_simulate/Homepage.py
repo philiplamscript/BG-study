@@ -2,10 +2,12 @@ import sys
 import os
 from pathlib import Path
 
-# Get the absolute path of the directory containing 'src'
-# (The root directory of your repo)
-root_path = Path(__file__).resolve().parent
-sys.path.append(str(root_path / "Gambling_simulate"))
+# # Get the absolute path of the directory containing 'src'
+# # (The root directory of your repo)
+# root_path = Path(__file__).resolve().parent
+# sys.path.append(str(root_path / "Gambling_simulate"))
+
+folder1_path = Path(__file__).parent / "Gambling_simulate"
 
 import streamlit as st
 import pandas as pd
