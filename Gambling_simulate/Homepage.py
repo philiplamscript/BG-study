@@ -4,7 +4,7 @@ from pathlib import Path
 
 # Get the absolute path of the directory containing 'src'
 # (The root directory of your repo)
-root_path = Path(__file__).resolve().parent.parent.parent
+root_path = Path(__file__).resolve().parent
 sys.path.append(str(root_path / "Gambling_simulate"))
 
 import streamlit as st
