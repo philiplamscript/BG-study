@@ -13,7 +13,7 @@ folder1_path = Path(__file__)
 current_dir = os.getcwd()
 
 # Join with your target folder
-target_dir = os.path.join(current_dir, "gambling_simulate")
+target_dir = os.path.join(current_dir, "Gambling_simulate")
 
 # Change the working directory
 # if os.path.exists(target_dir):
