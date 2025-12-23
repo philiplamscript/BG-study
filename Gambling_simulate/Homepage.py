@@ -11,7 +11,7 @@ def image_opening(link):
     try:
         st.image(f"{link}",width=250)
     except:
-        st.image(f"Gambling_simulate{link}",width=250)
+        st.image(f"Gambling_simulate/{link}",width=250)
 
 
 st.set_page_config(
