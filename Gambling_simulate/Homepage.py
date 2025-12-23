@@ -9,20 +9,18 @@ from pathlib import Path
 
 # folder1_path = Path(__file__).parent / "Gambling_simulate"
 
-import os
+# # Get the current directory (main)
+# current_dir = os.getcwd()
 
-# Get the current directory (main)
-current_dir = os.getcwd()
+# # # Join with your target folder
+# # target_dir = os.path.join(current_dir, "Gambling_simulate")
 
-# # Join with your target folder
-# target_dir = os.path.join(current_dir, "Gambling_simulate")
+# # Change the working directory
+# if os.path.exists(current_dir):
+#     os.chdir(current_dir)
 
-# Change the working directory
-if os.path.exists(current_dir):
-    os.chdir(current_dir)
-
-# Now, any relative paths will start inside /folder1
-print(f"Current working directory: {os.getcwd()}")
+# # Now, any relative paths will start inside /folder1
+# print(f"Current working directory: {os.getcwd()}")
 
 
 import streamlit as st
