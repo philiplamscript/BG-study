@@ -16,8 +16,8 @@ current_dir = os.getcwd()
 target_dir = os.path.join(current_dir, "gambling_simulate")
 
 # Change the working directory
-if os.path.exists(target_dir):
-    os.chdir(target_dir)
+# if os.path.exists(target_dir):
+os.chdir(target_dir)
 
 # # Now, any relative paths will start inside /folder1
 print(f"Current working directory: {os.getcwd()}")
